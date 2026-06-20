@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World — A Premium Experience</title>
-    <meta name="description" content="A visually stunning and interactive Hello World demonstration with rich glassmorphic aesthetics and modern design.">
+    <title>Trump National Emergencies Dashboard</title>
+    <meta name="description" content="A premium interactive dashboard summarizing and analyzing national emergency declarations and executive orders under Donald Trump.">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,42 +28,145 @@
     <!-- Interactive Canvas for Particle Effect -->
     <canvas id="particle-canvas"></canvas>
 
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Main Container -->
     <main class="main-container">
-        <!-- Theme Toggle -->
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light mode" id="theme-toggle-btn">
-            <i class="fas fa-moon"></i>
-        </button>
+        <!-- Dashboard Header -->
+        <header class="dashboard-header">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Interactive Analysis</span>
+            </div>
+            <h1 class="title-gradient">Trump National Emergencies</h1>
+            <p class="subtitle">A visual summary and chronological analysis of the national emergency declarations and related executive orders across both presidencies (2017–2021 and 2025–Present).</p>
+        </header>
 
-        <!-- Glass Card -->
-        <div class="glass-card" id="main-card">
-            <div class="card-glow"></div>
-            
-            <header class="card-header">
-                <div class="badge">
-                    <span class="badge-dot"></span>
-                    <span class="badge-text">Interactive Demo</span>
+        <!-- Stats Overview Row -->
+        <section class="stats-grid">
+            <div class="stats-card" id="stat-total">
+                <div class="stats-icon"><i class="fas fa-folder-open"></i></div>
+                <div class="stats-info">
+                    <span class="stats-value" id="stats-total-val">0</span>
+                    <span class="stats-label">Total Declarations</span>
                 </div>
-            </header>
-
-            <section class="card-content">
-                <h1 class="title-gradient" id="greeting-title">Hello, World!</h1>
-                <p class="subtitle" id="subtitle-text">Welcome to a showcase of modern web aesthetics and smooth interactivity.</p>
-            </section>
-
-            <footer class="card-actions">
-                <button id="action-btn" class="primary-btn">
-                    <span>Explore Magic</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                <div class="language-selector">
-                    <button class="lang-btn active" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="es">ES</button>
-                    <button class="lang-btn" data-lang="fr">FR</button>
-                    <button class="lang-btn" data-lang="ja">JA</button>
+            </div>
+            <div class="stats-card" id="stat-active">
+                <div class="stats-icon active-icon"><i class="fas fa-circle-check"></i></div>
+                <div class="stats-info">
+                    <span class="stats-value" id="stats-active-val">0</span>
+                    <span class="stats-label">Active / Renewed</span>
                 </div>
-            </footer>
+            </div>
+            <div class="stats-card" id="stat-ended">
+                <div class="stats-icon ended-icon"><i class="fas fa-circle-xmark"></i></div>
+                <div class="stats-info">
+                    <span class="stats-value" id="stats-ended-val">0</span>
+                    <span class="stats-label">Ended / Terminated</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Summary Charts & Insights Accordion -->
+        <section class="dashboard-mid-section">
+            <!-- Category Distribution Graph -->
+            <div class="glass-card distribution-card">
+                <h2 class="section-title"><i class="fas fa-chart-pie icon-gradient"></i> Category Distribution</h2>
+                <div class="category-bars" id="category-bars-container">
+                    <!-- Loaded dynamically via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Executive Insights Accordion -->
+            <div class="glass-card insights-card">
+                <h2 class="section-title"><i class="fas fa-lightbulb icon-gradient"></i> Executive Insights</h2>
+                <div class="accordion">
+                    <div class="accordion-item active">
+                        <button class="accordion-header" aria-expanded="true" id="accordion-btn-1">
+                            <span>First Presidency (2017–2021)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>During his first term, President Trump declared <strong>11 national emergencies</strong>. The majority (9) were sanctions-based, blocking property of foreign entities involved in corruption, human rights abuse (Myanmar, Nicaragua, Syria, Mali), and security threats (Huawei, Hong Kong, Chinese military investments). The term was highlighted by two landmark actions: Proclamation 9844 (Southern Border wall construction via fund redirection, which survived Congressional termination attempts by presidential veto) and Proclamation 9994 (COVID-19 pandemic declaration, unlocking $50B in aid, later terminated by Congress in 2023).</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" id="accordion-btn-2">
+                            <span>Second Presidency (2025–Present)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Starting on January 20, 2025, President Trump declared <strong>11 new national emergencies</strong> in a short span. This term features a unique shift toward using emergency authority for <strong>economic and trade policies</strong>. Specifically, he declared emergencies to immediately impose tariffs on imports: 25% on Canada and Mexico, 10% on China, 40% on Brazil, and broad "Reciprocal Tariffs". Other major actions include a second Southern Border Emergency (redirecting military units for entry denial and wall construction), a National Energy Emergency to boost domestic fossil fuel exploitation, and declaring cartels as Foreign Terrorist Organizations (FTOs).</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false" id="accordion-btn-3">
+                            <span>Historic Legal Precedents</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Under the National Emergencies Act of 1976, Trump's administrations set several historic precedents. The 2019 Southern Border declaration was the first time a President used emergency powers to divert funds that Congress had explicitly denied in appropriations. It also marked the first time both houses of Congress passed a resolution to terminate a national emergency (vetoed). The COVID-19 declaration, terminated on April 10, 2023, by a signed Congressional Joint Resolution, is the first national emergency to be officially terminated through Congressional action in U.S. history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters and Controls Card -->
+        <section class="controls-card glass-card">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search declarations by title, source, description...">
+            </div>
+            <div class="filters-row">
+                <div class="filter-group">
+                    <span class="filter-label">Category:</span>
+                    <div class="filter-options" id="category-filters">
+                        <button class="filter-btn active" data-category="all" id="btn-cat-all">All</button>
+                        <button class="filter-btn" data-category="Sanctions" id="btn-cat-sanctions">Sanctions</button>
+                        <button class="filter-btn" data-category="Economic" id="btn-cat-economic">Economic</button>
+                        <button class="filter-btn" data-category="Security" id="btn-cat-security">Security</button>
+                        <button class="filter-btn" data-category="Military" id="btn-cat-military">Military</button>
+                        <button class="filter-btn" data-category="Public health" id="btn-cat-health">Public Health</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Status:</span>
+                    <div class="filter-options" id="status-filters">
+                        <button class="filter-btn active" data-status="all" id="btn-status-all">All</button>
+                        <button class="filter-btn" data-status="Current" id="btn-status-active">Active</button>
+                        <button class="filter-btn" data-status="Ended" id="btn-status-ended">Ended</button>
+                    </div>
+                </div>
+                <div class="filter-group sort-group">
+                    <span class="filter-label">Sort:</span>
+                    <select id="sort-select" class="sort-dropdown">
+                        <option value="newest" id="opt-newest">Newest First</option>
+                        <option value="oldest" id="opt-oldest">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- No Results Panel -->
+        <div class="no-results glass-card" id="no-results-panel" style="display: none;">
+            <i class="fas fa-circle-exclamation no-results-icon"></i>
+            <h3>No declarations match your filters</h3>
+            <p>Try adjusting your search keywords, category, or status selection.</p>
         </div>
+
+        <!-- Declarations Grid -->
+        <section class="declarations-grid" id="declarations-container">
+            <!-- Loaded dynamically via JavaScript -->
+        </section>
+
+        <!-- Dashboard Footer -->
+        <footer class="dashboard-footer">
+            <p>Data sourced from Wikipedia & Official U.S. Federal Registers. Last updated June 2026.</p>
+        </footer>
     </main>
 
     <!-- Custom JS -->

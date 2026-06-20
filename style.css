@@ -460,7 +460,7 @@ body {
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 250px;
+    max-height: 500px;
     padding-bottom: 1.2rem;
 }
 

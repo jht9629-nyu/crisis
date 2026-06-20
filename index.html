@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World — A Premium Experience</title>
+    <meta name="description" content="A visually stunning and interactive Hello World demonstration with rich glassmorphic aesthetics and modern design.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background glow elements -->
+    <div class="glow-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Interactive Canvas for Particle Effect -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light mode" id="theme-toggle-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- Glass Card -->
+        <div class="glass-card" id="main-card">
+            <div class="card-glow"></div>
+            
+            <header class="card-header">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text">Interactive Demo</span>
+                </div>
+            </header>
+
+            <section class="card-content">
+                <h1 class="title-gradient" id="greeting-title">Hello, World!</h1>
+                <p class="subtitle" id="subtitle-text">Welcome to a showcase of modern web aesthetics and smooth interactivity.</p>
+            </section>
+
+            <footer class="card-actions">
+                <button id="action-btn" class="primary-btn">
+                    <span>Explore Magic</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="es">ES</button>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="ja">JA</button>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
